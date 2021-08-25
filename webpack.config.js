@@ -1,25 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+
+const base = require('./webpack.config.base.js')
 module.exports = {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
-    },
-    entry: './src/index.js',
-    output: {
-        filename: 'index.[contenthash].js'
-    },
-    plugins: [new HtmlWebpackPlugin({
-        title: '刘建兵',
-        template: 'src/assets/index.html'
-    })],
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
-            },
-        ],
-    },
+  ...base,
+  devtool: "inline-source-map",
+  devServer: {
+    contentBase: "./dist",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
